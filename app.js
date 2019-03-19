@@ -6,7 +6,7 @@ const onerror = require('koa-onerror')
 const logger = require('koa-logger')
 
 
-const index = require('./routes/index')
+const router = require('./routes')
 
 // error handler
 onerror(app)
@@ -35,7 +35,7 @@ app.use(async (ctx, next) => {
 })
 
 // routes
-app.use(index.routes(), index.allowedMethods())
+router(app)
 
 // error-handling
 app.on('error', (err, ctx) => {
